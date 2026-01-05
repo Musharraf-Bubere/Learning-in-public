@@ -1,0 +1,13 @@
+prefix=D:/Learning-in-public/DSA_with_Python/dsa_env/Library
+exec_prefix=D:/Learning-in-public/DSA_with_Python/dsa_env/Library
+libdir=D:/Learning-in-public/DSA_with_Python/dsa_env/Library/lib
+sharedlibdir=D:/Learning-in-public/DSA_with_Python/dsa_env/Library/lib
+includedir=D:/Learning-in-public/DSA_with_Python/dsa_env/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
