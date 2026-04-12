@@ -6,3 +6,4 @@ seaborn
 mlxtend
 bs4
 lxml
+tensorflow
