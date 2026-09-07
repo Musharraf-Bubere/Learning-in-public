@@ -498,3 +498,39 @@ Examples:
 11. Initializing with `0` can give incorrect results when the array contains negative numbers.
 
 12. Largest = `-3`, second largest = `-5`.
+
+## Problem 6 — Move All Zeros to the End
+
+### Problem
+
+Given an array/list, move all zeros to the end while preserving the relative order of the non-zero elements.
+
+Example:
+
+`[0, 1, 0, 3, 12]` → `[1, 3, 12, 0, 0]`
+
+`[0, 5, 0, 2, 8]` → `[5, 2, 8, 0, 0]`
+
+The solution should modify the original list in-place.
+
+### Questions
+
+1. What is the purpose of `i`?
+2. What is the purpose of `insert_pos`?
+3. What should happen when `numbers[i] == 0`?
+4. What should happen when `numbers[i] != 0`?
+5. Why do we use swapping instead of only assignment?
+6. What is the time complexity?
+7. What is the extra space complexity?
+8. Why is the relative order of non-zero elements preserved?
+
+### Your Answers
+
+1. `i` is used to scan every element of the list.
+2. `insert_pos` represents the position where the next non-zero element should be placed.
+3. When `numbers[i] == 0`, we do nothing and keep `insert_pos` unchanged.
+4. When `numbers[i] != 0`, we swap it with the element at `insert_pos` and then increment `insert_pos`.
+5. Swapping prevents an existing value from being overwritten and lost.
+6. The time complexity is `O(n)` because the list is scanned once.
+7. The extra space complexity is `O(1)` because only a constant number of variables are used.
+8. The relative order is preserved because non-zero elements are processed from left to right and placed in the same order.

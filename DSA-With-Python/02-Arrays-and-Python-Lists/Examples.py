@@ -300,3 +300,41 @@ print(find_second_largest(numbers))
 
 # Output:
 # -5
+
+# ============================================================
+# Day 10 — Move All Zeros to the End
+# ============================================================
+
+def move_zeros(numbers):
+    insert_pos = 0
+
+    for i in range(len(numbers)):
+        if numbers[i] != 0:
+            numbers[insert_pos], numbers[i] = numbers[i], numbers[insert_pos]
+            insert_pos += 1
+
+    return numbers
+
+
+# Example 1
+numbers = [0, 1, 0, 3, 12]
+print(move_zeros(numbers))
+# Output: [1, 3, 12, 0, 0]
+
+
+# Example 2
+numbers = [0, 5, 0, 2, 8]
+print(move_zeros(numbers))
+# Output: [5, 2, 8, 0, 0]
+
+
+# Example 3 — No zeros
+numbers = [1, 2, 3, 4]
+print(move_zeros(numbers))
+# Output: [1, 2, 3, 4]
+
+
+# Example 4 — All zeros
+numbers = [0, 0, 0]
+print(move_zeros(numbers))
+# Output: [0, 0, 0]

@@ -1889,3 +1889,209 @@ means both conditions must be true.
 - Time Complexity = O(n).
 - Extra Space Complexity = O(1).
 - This approach avoids sorting the entire array.
+
+## Day 10 — Move All Zeros to the End
+
+### Problem
+
+Move all zeros in an array/list to the end while preserving the relative order of all non-zero elements.
+
+Example:
+
+`[0, 1, 0, 3, 12]` → `[1, 3, 12, 0, 0]`
+
+`[0, 5, 0, 2, 8]` → `[5, 2, 8, 0, 0]`
+
+### Goal
+
+- Move every `0` to the end.
+- Preserve the order of non-zero elements.
+- Modify the original list in-place.
+- Use O(1) extra space.
+
+### Two-Pointer Approach
+
+Use two variables:
+
+- `i` → scanner that visits every element.
+- `insert_pos` → position where the next non-zero element should be placed.
+
+Initialize:
+
+`insert_pos = 0`
+
+Then scan the list using `i`.
+
+If `numbers[i]` is zero:
+
+- Do nothing.
+- `insert_pos` remains unchanged.
+
+If `numbers[i]` is non-zero:
+
+- Swap `numbers[i]` with `numbers[insert_pos]`.
+- Increment `insert_pos`.
+
+### Code
+
+`def move_zeros(numbers):`
+`    insert_pos = 0`
+``
+`    for i in range(len(numbers)):`
+`        if numbers[i] != 0:`
+`            numbers[insert_pos], numbers[i] = numbers[i], numbers[insert_pos]`
+`            insert_pos += 1`
+``
+`    return numbers`
+
+### Example Trace
+
+For:
+
+`[0, 1, 0, 3, 12]`
+
+Initially:
+
+`insert_pos = 0`
+
+When `i = 0`:
+
+`numbers[0] = 0`
+
+Zero is ignored.
+
+List:
+
+`[0, 1, 0, 3, 12]`
+
+When `i = 1`:
+
+`numbers[1] = 1`
+
+Swap positions `insert_pos` and `i`:
+
+`[1, 0, 0, 3, 12]`
+
+Then:
+
+`insert_pos = 1`
+
+When `i = 2`:
+
+`numbers[2] = 0`
+
+Zero is ignored.
+
+When `i = 3`:
+
+`numbers[3] = 3`
+
+Swap:
+
+`[1, 3, 0, 0, 12]`
+
+Then:
+
+`insert_pos = 2`
+
+When `i = 4`:
+
+`numbers[4] = 12`
+
+Swap:
+
+`[1, 3, 12, 0, 0]`
+
+Final result:
+
+`[1, 3, 12, 0, 0]`
+
+### Mental Model
+
+Think of the two pointers as:
+
+`i` → searches for non-zero elements.
+
+`insert_pos` → tells where the next non-zero element belongs.
+
+Therefore:
+
+**i searches → insert_pos places**
+
+### Why Swapping Is Used
+
+We use:
+
+`numbers[insert_pos], numbers[i] = numbers[i], numbers[insert_pos]`
+
+instead of only:
+
+`numbers[insert_pos] = numbers[i]`
+
+because simple assignment can overwrite an existing value and lose it.
+
+Swapping moves the non-zero element forward while moving the zero toward the end.
+
+### Why Relative Order Is Preserved
+
+Non-zero elements are processed from left to right.
+
+Therefore, they are placed in the same order in which they originally appeared.
+
+Example:
+
+`[0, 5, 0, 2, 8]`
+
+Non-zero elements appear as:
+
+`5 → 2 → 8`
+
+Final result:
+
+`[5, 2, 8, 0, 0]`
+
+The order remains unchanged.
+
+### In-Place Modification
+
+The algorithm modifies the original list instead of creating a new list.
+
+Example:
+
+`numbers = [0, 1, 0, 3, 12]`
+
+After calling:
+
+`move_zeros(numbers)`
+
+the original `numbers` becomes:
+
+`[1, 3, 12, 0, 0]`
+
+### Complexity Analysis
+
+Time Complexity:
+
+`O(n)`
+
+The list is scanned once.
+
+Space Complexity:
+
+`O(1)`
+
+Only the variables `i` and `insert_pos` are used.
+
+The algorithm works in-place.
+
+### Key Takeaways
+
+- Two pointers can solve array rearrangement problems efficiently.
+- `i` scans the array.
+- `insert_pos` tracks the next position for a non-zero element.
+- Zeros are skipped.
+- Non-zero elements are swapped into position.
+- Relative order of non-zero elements is preserved.
+- The algorithm runs in O(n) time.
+- The algorithm uses O(1) extra space.
+- The original list is modified in-place.
